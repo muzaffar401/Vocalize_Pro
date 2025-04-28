@@ -431,7 +431,7 @@ def main():
     # Footer at the bottom of the page
     st.markdown("""
     <div class="footer">
-        <p>Built with ❤️ using Streamlit and gTTS | © 2023 <span style="color: #6366f1;">Vocalize Pro</span></p>
+        <p>Built with ❤️ using Streamlit and gTTS | © 2025 <span style="color: #6366f1;">Vocalize Pro</span></p>
         <div style="margin-top: 10px;">
             <span style="display: inline-block; animation: bounce 2s infinite;">✨</span>
             <span style="display: inline-block; animation: bounce 2s infinite 0.2s;">🎤</span>
