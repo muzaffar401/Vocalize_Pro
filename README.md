@@ -1,25 +1,29 @@
-# 🎙️ Vocalize Pro - Text to Speech Converter
+Here's the updated README.md with the gTTS module instead of pyttsx3:
+
+# � Vocalize Pro - Text to Speech Converter
 
 ![Vocalize Pro Screenshot](/assets/image.png) 
 
 ## 🌟 Introduction
 
-Vocalize Pro is an ultra-modern, visually stunning text-to-speech application that transforms written text into natural sounding speech. With its beautiful interface, engaging animations, and high-quality voice synthesis, it provides an exceptional user experience for converting text to audio.
+Vocalize Pro is an ultra-modern, visually stunning text-to-speech application that transforms written text into natural sounding speech. With its beautiful interface, engaging animations, and high-quality voice synthesis using Google's Text-to-Speech API, it provides an exceptional user experience for converting text to audio.
 
 ## ✨ Features
 
-- 🎭 Multiple voice options (male/female)
-- 🏎️ Adjustable speech speed (100-300 WPM)
+- 🌍 Multiple language support (via gTTS)
+- 🎭 Various voice accents and styles
+- 🏎️ Adjustable speech speed (slow/normal/fast)
 - ✨ Beautiful modern UI with animations
 - 🎉 Celebration effects on successful conversion
 - 📋 Sample text buttons for quick testing
-- 🎙️ Real-time speech preview
+- 🎙️ MP3 audio generation and playback
 - 📱 Fully responsive design
 
 ## 🛠️ Technology Stack
 
 - **Frontend**: Streamlit (Python web framework)
-- **Text-to-Speech Engine**: pyttsx3
+- **Text-to-Speech Engine**: gTTS (Google Text-to-Speech)
+- **Audio Playback**: IPython.display.Audio
 - **UI Enhancements**: streamlit-extras
 - **Styling**: Custom CSS with animations
 
@@ -48,7 +52,7 @@ vocalize-pro/
 ├── main.py                # Main application file
 ├── requirements.txt      # Dependencies file
 ├── README.md             # Project documentation
-└── assets/               # For storing images
+└── assets/               # For storing images and audio files
 ```
 
 ## 🔧 How It Works
@@ -60,20 +64,21 @@ vocalize-pro/
    - Includes placeholder text with examples
    - Clear button to reset the input
 
-2. **Voice Settings Module**:
-   - Gender selection (male/female) with icons
-   - Speech rate slider with custom styling
+2. **Language Settings Module**:
+   - Language selection dropdown (English, Spanish, French, etc.)
+   - Speech speed selection (slow/normal/fast)
    - Settings are preserved during session
 
 3. **Sample Text Module**:
    - Quick-insert buttons for common phrases
    - Each button has a helpful tooltip
-   - Sample text includes greetings and common phrases
+   - Sample text includes greetings in different languages
 
 4. **Speech Generation Module**:
-   - Converts text to speech using pyttsx3
-   - Shows progress bar during conversion
-   - Displays the output text being spoken
+   - Converts text to speech using gTTS
+   - Generates MP3 files for playback
+   - Shows progress during conversion
+   - Displays audio player for output
 
 5. **UI/UX Enhancements**:
    - Animated buttons and elements
@@ -84,17 +89,17 @@ vocalize-pro/
 
 1. **User Input**:
    - User enters text in the input area or selects a sample
-   - Adjusts voice settings as needed
+   - Selects language and speed preferences
 
 2. **Speech Generation**:
    - User clicks "Convert to Speech" button
    - System validates input (shows error if empty)
-   - Progress bar shows generation status
+   - gTTS generates MP3 audio file
 
 3. **Audio Output**:
-   - Text is converted to speech using selected voice
-   - Audio plays through system speakers
+   - Audio player appears for playback
    - Success message appears with optional celebration
+   - Temporary MP3 file is created (can be downloaded)
 
 4. **Feedback Loop**:
    - User can adjust settings and regenerate
@@ -103,7 +108,7 @@ vocalize-pro/
 
 ## 📝 Code Explanation
 
-### 🎯 Main Function (`main()`)
+### � Main Function (`main()`)
 
 1. **Initialization**:
    - Sets up page configuration
@@ -118,22 +123,24 @@ vocalize-pro/
 3. **Event Handling**:
    - Button click handlers
    - Text input validation
-   - Session state management
+   - Audio file generation and cleanup
 
-### 🔊 Speech Engine (`speak()` function)
+### 🔊 Speech Engine (gTTS Integration)
 
-1. **Initialization**:
-   - Creates pyttsx3 engine instance
-   - Configures voice properties
+1. **Audio Generation**:
+   - Uses gTTS to convert text to speech
+   - Supports multiple languages
+   - Adjusts speech speed (slow/normal/fast)
 
-2. **Voice Selection**:
-   - Sets male/female voice based on selection
-   - Adjusts speech rate from slider
+2. **Playback**:
+   - Saves temporary MP3 file
+   - Uses IPython.display.Audio for playback
+   - Handles file cleanup after session
 
-3. **Execution**:
-   - Converts text to speech
-   - Shows spinner during processing
-   - Properly cleans up resources
+3. **Error Handling**:
+   - Manages API limitations
+   - Handles invalid text inputs
+   - Provides user feedback
 
 ## 🌈 UI/UX Highlights
 
@@ -143,7 +150,7 @@ vocalize-pro/
   - Bouncing success indicators
 
 - **Visual Feedback**:
-  - Progress bars
+  - Progress indicators
   - Success/error messages
   - Celebration effects
 
@@ -159,6 +166,13 @@ MIT License - Free for personal and commercial use
 ## 🙏 Acknowledgments
 
 - Streamlit team for the amazing framework
-- pyttsx3 developers for the TTS engine
+- Google for the gTTS library
 - Open source community for inspiration
 
+Key changes made:
+- Replaced pyttsx3 references with gTTS
+- Updated features to reflect gTTS capabilities (languages instead of genders)
+- Modified the speech engine explanation
+- Added MP3 file handling details
+- Updated the workflow to reflect gTTS's file-based approach
+- Kept all the UI/UX elements that aren't engine-dependent
